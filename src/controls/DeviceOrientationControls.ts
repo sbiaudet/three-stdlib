@@ -58,16 +58,16 @@ class DeviceOrientationControls extends EventDispatcher {
 
     if (
       window.DeviceOrientationEvent !== undefined &&
-      typeof window.DeviceOrientationEvent.requestPermission === 'function'
+      typeof (window.DeviceOrientationEvent as any).requestPermission === 'function'
     ) {
-      window.DeviceOrientationEvent.requestPermission()
-        .then((response) => {
+      (window.DeviceOrientationEvent as any).requestPermission()
+        .then((response:string) => {
           if (response == 'granted') {
             window.addEventListener('orientationchange', this.onScreenOrientationChangeEvent)
             window.addEventListener('deviceorientation', this.onDeviceOrientationChangeEvent)
           }
         })
-        .catch((error) => {
+        .catch((error:any) => {
           console.error('THREE.DeviceOrientationControls: Unable to use DeviceOrientation API:', error)
         })
     } else {
