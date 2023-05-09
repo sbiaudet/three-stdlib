@@ -1,4 +1,5 @@
-import { Navigator, WebGLRenderer, XRSession, XRSessionInit } from 'three'
+import { WebGLRenderer } from 'three'
+import 'webxr'
 
 class ARButton {
   static createButton(renderer: WebGLRenderer, sessionInit: XRSessionInit = {}): HTMLButtonElement | HTMLAnchorElement {
@@ -131,7 +132,7 @@ class ARButton {
       // Query for session mode
       ;(navigator as Navigator)
         .xr!.isSessionSupported('immersive-ar')
-        .then(function (supported) {
+        .then(function (supported:boolean) {
           supported ? showStartAR() : showARNotSupported()
         })
         .catch(showARNotSupported)

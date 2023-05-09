@@ -1,4 +1,5 @@
-import { Navigator, WebGLRenderer, XRSession, XRSessionInit } from 'three'
+import 'webxr'
+import { WebGLRenderer } from 'three'
 
 class VRButton {
   static createButton(renderer: WebGLRenderer, sessionInit: XRSessionInit = {}): HTMLButtonElement | HTMLAnchorElement {
